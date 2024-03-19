@@ -4,13 +4,17 @@
 
 <details open><summary>Deployments</summary>
 
-<p align="left"><a href="deployments/README.md#deployment-commands">Deployments</a></p>
+<p align="justify">
+	<a href="deployments/README.md#deployment-commands">Deployment commands</a>
+</p>
 
 </details>
 
 <details open><summary>Maintenance</summary>
 
-- [Maintenance commands](maintenance/README.md#maintenance-commands)
+<p align="justify">
+	<a href="maintenance/README.md#maintenance-commands">Maintenance commands</a>
+</p>
 
 </details>
 
