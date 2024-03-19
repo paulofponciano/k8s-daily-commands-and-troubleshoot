@@ -4,7 +4,7 @@
 
 <details open><summary>Deployments</summary>
 
-<p align="center"><a href="deployments/README.md#deployment-commands"></a>Deployments</p>
+<p align="left"><a href="deployments/README.md#deployment-commands">Deployments</a></p>
 
 </details>
 
