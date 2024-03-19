@@ -4,7 +4,7 @@
 
 <details open><summary>Deployments</summary>
 
-- [Deployment commands](deployments/README.md#deployment-commands)
+<p align="center"><a href="deployments/README.md#deployment-commands"></a>Deployments</p>
 
 </details>
 
