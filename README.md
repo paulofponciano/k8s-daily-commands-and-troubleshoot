@@ -4,12 +4,14 @@
 
 <details open>
 <summary>Deployments</summary>
-* [Deployment commands](deployments/README.md#deployment-commands)
+- [Deployment commands](deployments/README.md#deployment-commands)
 </details>
 
 <details open>
 <summary>Maintenance</summary>
-* [Maintenance commands](maintenance/README.md#maintenance-commands)
+- [Maintenance commands](maintenance/README.md#maintenance-commands)
 </details>
+
+- [Deployment commands](deployments/README.md#deployment-commands)
 
 ---
