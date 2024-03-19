@@ -6,7 +6,7 @@
 
 <summary>Deployments</summary>
 
-- [Deployments](deployments/README.md#deployments-commands)
+- [Deployments commands](deployments/README.md#deployments-commands)
 
 </details>
 
