@@ -4,7 +4,7 @@
 
 <details>
 
-<summary>**Deployments**</summary>
+<summary>Deployments</summary>
 
 - [Deployment commands](deployments/README.md#deployment-commands)
 
