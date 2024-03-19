@@ -10,4 +10,10 @@
 
 </details>
 
+<summary>Maintenance</summary>
+
+- [Maintenance commands](maintenance/README.md#maintenance-commands)
+
+</details>
+
 ---

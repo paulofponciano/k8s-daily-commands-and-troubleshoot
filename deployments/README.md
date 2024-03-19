@@ -38,4 +38,5 @@ kubectl scale deployment.apps/frontend-deployment --replicas=11
 ```sh
 kubectl describe deployment.apps/frontend-deployment | grep StrategyType
 ```
+
 ---
