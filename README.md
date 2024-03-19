@@ -6,7 +6,7 @@
 
 <summary>Deployments</summary>
 
-- [Deployment commands](deployments/README.md#deployment-commands)
+  - [Deployment commands](deployments/README.md#deployment-commands)
 
 </details>
 
@@ -14,7 +14,7 @@
 
 <summary>Maintenance</summary>
 
-- [Maintenance commands](maintenance/README.md#maintenance-commands)
+  - [Maintenance commands](maintenance/README.md#maintenance-commands)
 
 </details>
 
