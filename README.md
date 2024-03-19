@@ -1,4 +1,4 @@
-![pages build](https://github.com/paulofponcino/k8s-daily-commands-and-troubleshoot/actions/workflows/pages-build-deployment.yml/badge.svg?branch=main)
+![pages build](https://github.com/paulofponcino/k8s-daily-commands-and-troubleshoot/actions/workflows/pages-build-deployment.yaml/badge.svg?branch=main)
 
 # Comandos diários e resolução de problemas em kubernetes
 
