@@ -5,7 +5,7 @@
 <details open><summary>Deployments</summary>
 
 <p align="justify">
-	<a href="deployments/README.md#deployment-commands">Deployment commands</a>
+	<a href="https://github.com/paulofponciano/k8s-daily-commands-and-troubleshoot/tree/main/deployments">Deployment commands</a>
 </p>
 
 </details>
