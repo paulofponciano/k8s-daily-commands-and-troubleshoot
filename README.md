@@ -4,14 +4,18 @@
 
 <details open>
 <summary>Deployments</summary>
+
 - [Deployment commands](deployments/README.md#deployment-commands)
+
 </details>
 
 <details open>
 <summary>Maintenance</summary>
+
 - [Maintenance commands](maintenance/README.md#maintenance-commands)
+
 </details>
 
-- [Deployment commands](deployments/README.md#deployment-commands)
-
 ---
+
+<p align="center"><a href="https://github.com/paulofponciano/k8s-daily-commands-and-troubleshoot"><img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/paulofponciano/k8s-daily-commands-and-troubleshoot?label=k8s-daily-commands-and-troubleshoot&style=social"></a></p>
