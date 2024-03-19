@@ -2,21 +2,9 @@
 
 <p align="left"><img src="https://www.vectorlogo.zone/logos/kubernetes/kubernetes-icon.svg" width="80" alt="kube_logo"></p>
 
-<details open><summary>Deployments</summary>
+## [Deployment commands](deployments/README.md#deployment-commands)
 
-<p align="justify">
-	<a href="https://github.com/paulofponciano/k8s-daily-commands-and-troubleshoot/tree/main/deployments">Deployment commands</a>
-</p>
-
-</details>
-
-<details open><summary>Maintenance</summary>
-
-<p align="justify">
-	<a href="maintenance/README.md#maintenance-commands">Maintenance commands</a>
-</p>
-
-</details>
+## [Maintenance commands](maintenance/README.md#maintenance-commands)
 
 ---
 
