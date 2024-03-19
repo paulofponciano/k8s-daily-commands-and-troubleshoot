@@ -3,6 +3,7 @@
 <p align="left"><img src="https://www.vectorlogo.zone/logos/kubernetes/kubernetes-icon.svg" width="80" alt="kube_logo"></p>
 
 ## [Deployment commands](deployments/README.md#deployment-commands)
+### [Rollout](deployments/README.md#deployment-commands#rollout)
 
 ## [Maintenance commands](maintenance/README.md#maintenance-commands)
 

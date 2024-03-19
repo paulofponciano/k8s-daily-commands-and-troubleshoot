@@ -2,6 +2,8 @@
 
 <p align="left"><img src="https://www.vectorlogo.zone/logos/kubernetes/kubernetes-icon.svg" width="80" alt="kube_logo"></p>
 
+## Create
+
 ```sh
 kubectl create deployment --image=nginx nginx --dry-run=client -o yaml > nginx-deployment.yaml
 ```
@@ -11,6 +13,9 @@ kubectl create deployment --image=nginx nginx --replicas=4 --dry-run=client -o y
 ```sh
 kubectl create deployment webapp --image=nginx --replicas=3
 ```
+
+## Rollout
+
 ```sh
 kubectl rollout status deployment.apps/frontend-deployment
 ```
@@ -32,9 +37,15 @@ kubectl rollout pause deployment.apps/frontend-deployment
 ```sh
 kubectl rollout resume deployment.apps/frontend-deployment
 ```
+
+## Scale
+
 ```sh
 kubectl scale deployment.apps/frontend-deployment --replicas=11
 ```
+
+## Describe
+
 ```sh
 kubectl describe deployment.apps/frontend-deployment | grep StrategyType
 ```
