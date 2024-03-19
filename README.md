@@ -2,14 +2,18 @@
 
 <p align="left"><img src="https://www.vectorlogo.zone/logos/kubernetes/kubernetes-icon.svg" width="80" alt="kube_logo"></p>
 
-## [Deployment commands](deployments/README.md#deployment-commands)
+## [Deployment](deployments/README.md#deployment)
+
+### Commands
 
 - [**Describe**](deployments/README.md#describe)
 - [**Create**](deployments/README.md#create)
 - [**Rollout**](deployments/README.md#rollout)
 - [**Scale**](deployments/README.md#scale)
 
-## [Maintenance commands](maintenance/README.md#maintenance-commands)
+### Examples
+
+## [Maintenance](maintenance/README.md#maintenance)
 
 ---
 
