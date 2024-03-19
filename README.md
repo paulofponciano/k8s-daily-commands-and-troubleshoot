@@ -4,7 +4,10 @@
 
 ## [Deployment commands](deployments/README.md#deployment-commands)
 
-- [Rollout](deployments/README.md#rollout)
+- [**Describe**](deployments/README.md#describe)
+- [**Create**](deployments/README.md#create)
+- [**Rollout**](deployments/README.md#rollout)
+- [**Scale**](deployments/README.md#scale)
 
 ## [Maintenance commands](maintenance/README.md#maintenance-commands)
 
