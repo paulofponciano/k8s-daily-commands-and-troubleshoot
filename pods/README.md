@@ -15,6 +15,9 @@ kubectl get all -A
 ```sh
 kubectl get events -o wide
 ```
+```sh
+test
+```
 
 ### Exec
 
