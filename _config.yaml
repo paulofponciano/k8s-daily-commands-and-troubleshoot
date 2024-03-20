@@ -1,10 +1,9 @@
 #remote_theme: just-the-docs/just-the-docs
-title: YOUR TITLE
-description: YOUR DESCRIPTION
+title:  k8s-daily-commands-and-troubleshoot
+description: Comandos diários e resolução de problemas em kubernetes
 theme: just-the-docs
 
-url: https://paulofponciano.github.io/k8s-daily-commands-and-troubleshoot
-
+url: https://paulofponciano.github.io/k8s-daily-commands-and-troubleshoot/
 
 aux_links: # remove if you don't want this link to appear on your pages
-  Template Repository: https://github.com/paulofponciano/ k8s-daily-commands-and-troubleshoot
+  Template Repository: https://github.com/paulofponciano/k8s-daily-commands-and-troubleshoot
