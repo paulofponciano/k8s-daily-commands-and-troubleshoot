@@ -5,7 +5,7 @@ layout: home
 
 <p align="left"><img src="https://www.vectorlogo.zone/logos/kubernetes/kubernetes-icon.svg" width="80" alt="kube_logo"></p>
 
-## [Pods](pods/README.md#pods)
+## [Pods](pods/index.md#pods)
 
 ### Commands
 
