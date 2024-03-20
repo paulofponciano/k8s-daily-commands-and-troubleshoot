@@ -22,6 +22,15 @@ kubectl create secret generic \
 ```sh
 curl -v -k https://kube-apiserver:6443/api/v1/pods --key admin.key --cert admin.crt --cacert ca.crt
 ```
+```sh
+curl -v -k https://master-node-ip:6443/api/v1/pods -u “user:password”
+```
+```sh
+curl -v -k https://master-node-ip:6443/api/v1/pods --header “Authorization: Baerer TOKEN”
+```
+```sh
+curl -v -k https://master-node-ip:6443/api/v1/pods -insecure --header “Authorization: Baerer TOKEN”
+```
 
 ## Examples
 
