@@ -13,6 +13,10 @@
 
 ### Examples
 
+## [Security / Secrets](security-secrets/README.md#security)
+
+## [Storage](storage/README.md#storage)
+
 ## [Maintenance](maintenance/README.md#maintenance)
 
 ---

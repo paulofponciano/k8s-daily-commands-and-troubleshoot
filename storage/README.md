@@ -1,25 +1,14 @@
-# Maintenance
+# Storage / PV / PVC
 
 <p align="left"><img src="https://www.vectorlogo.zone/logos/kubernetes/kubernetes-icon.svg" width="80" alt="kube_logo"></p>
 
 ## Commands
 
-### Drain
+### Mount in Docker
 
 ```sh
-kubectl drain node01 --ignore-daemonsets
-```
-```sh
-kubectl drain node01
-```
-
-### Cordon / Uncordon
-
-```sh
-kubectl cordon node01
-```
-```sh
-kubectl uncordon node01
+docker run \
+--mount type=bind, source=/data/mysql, target=/var/lib/mysql mysql
 ```
 
 ---
