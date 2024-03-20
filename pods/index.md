@@ -1,5 +1,5 @@
 ---
-title: Home
+title: Pods
 layout: home
 ---
 
