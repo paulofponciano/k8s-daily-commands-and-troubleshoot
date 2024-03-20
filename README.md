@@ -37,6 +37,19 @@
 
 ## [Maintenance](maintenance/README.md#maintenance)
 
+## [Labels / Selectors](labels-selectors/README.md#labels)
+
+### Commands
+
+- [**Get**](labels-selectors/README.md#get)
+- [**Label**](labels-selectors/README.md#label)
+
+## [Taints / Tolerations / Affinity](taints-tolerations-affinity/README.md#taints)
+
+### Commands
+
+- [**Taint**](taints-tolerations-affinity/README.md#taint)
+
 ---
 
 <p align="center"><a href="https://github.com/paulofponciano/k8s-daily-commands-and-troubleshoot"><img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/paulofponciano/k8s-daily-commands-and-troubleshoot?label=k8s-daily-commands-and-troubleshoot&style=social"></a></p>
