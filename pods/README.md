@@ -26,6 +26,14 @@ kubectl exec POD_NAME -- COMMAND > /LOCALHOST_PATH/file.out
 ```sh
 kubectl run -it debian-pod --image=debian bash
 ```
+```sh
+kubectl run static-busybox --image=busybox --restart=Never --dry-run=client -o yaml --command -- sleep 1000
+```
+
+### Replace
+```sh
+kubectl replace —force -f /tmp/kubectl-edit-temp.yaml
+```
 
 ---
 
