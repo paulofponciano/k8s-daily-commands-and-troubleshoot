@@ -2,6 +2,16 @@
 
 <p align="left"><img src="https://www.vectorlogo.zone/logos/kubernetes/kubernetes-icon.svg" width="80" alt="kube_logo"></p>
 
+## [Pods](pods/README.md#pods)
+
+### Commands
+
+- [**Get**](pods/README.md#get)
+- [**Exec**](pods/README.md#exec)
+- [**Run**](pods/README.md#run)
+
+### Examples
+
 ## [Deployments](deployments/README.md#deployments)
 
 ### Commands
@@ -10,6 +20,14 @@
 - [**Create**](deployments/README.md#create)
 - [**Rollout**](deployments/README.md#rollout)
 - [**Scale**](deployments/README.md#scale)
+
+### Examples
+
+## [Services](services/README.md#services)
+
+### Commands
+
+- [**Expose**](services/README.md#expose)
 
 ### Examples
 
