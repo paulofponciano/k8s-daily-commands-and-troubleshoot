@@ -1,8 +1,6 @@
-# Comandos diários e resolução de problemas em kubernetes
-
 <p align="left"><img src="https://www.vectorlogo.zone/logos/kubernetes/kubernetes-icon.svg" width="80" alt="kube_logo"></p>
 
-## [Pods](pods/README.md#pods)
+## [Pods](./pods)
 
 ### Commands
 
@@ -12,7 +10,7 @@
 
 ### Examples
 
-## [Deployments](deployments/README.md#deployments)
+## [Deployments](./deployments)
 
 ### Commands
 
@@ -23,7 +21,7 @@
 
 ### Examples
 
-## [Services](services/README.md#services)
+## [Services](./services)
 
 ### Commands
 
@@ -31,20 +29,20 @@
 
 ### Examples
 
-## [Security / Secrets](security-secrets/README.md#security)
+## [Security / Secrets](./security-secrets)
 
-## [Storage / PV / PVC](storage/README.md#storage)
+## [Storage / PV / PVC](./storage)
 
-## [Maintenance](maintenance/README.md#maintenance)
+## [Maintenance](./maintenance)
 
-## [Labels / Selectors](labels-selectors/README.md#labels)
+## [Labels / Selectors](./labels-selectors)
 
 ### Commands
 
 - [**Get**](labels-selectors/README.md#get)
 - [**Label**](labels-selectors/README.md#label)
 
-## [Taints / Tolerations / Affinity](taints-tolerations-affinity/README.md#taints)
+## [Taints / Tolerations / Affinity](./taints-tolerations-affinity)
 
 ### Commands
 
@@ -52,4 +50,6 @@
 
 ---
 
-<p align="center"><a href="https://github.com/paulofponciano/k8s-daily-commands-and-troubleshoot"><img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/paulofponciano/k8s-daily-commands-and-troubleshoot?label=k8s-daily-commands-and-troubleshoot&style=social"></a></p>
+<p align="left"><a href="https://github.com/paulofponciano/k8s-daily-commands-and-troubleshoot"><img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/paulofponciano/k8s-daily-commands-and-troubleshoot?label=k8s-daily-commands-and-troubleshoot&style=social"></a></p>
+
+![pages branch main](https://github.com/paulofponciano/k8s-daily-commands-and-troubleshoot/actions/workflows/ci-gh-pages.yaml/badge.svg?branch=main)
