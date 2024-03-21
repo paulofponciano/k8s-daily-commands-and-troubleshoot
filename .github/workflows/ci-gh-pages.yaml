@@ -82,7 +82,7 @@ jobs:
         }
 
         traverse_directories() {
-            if [ "$(pwd)" != "$GITHUB_WORKSPACE" ]; then
+            if [ "$(pwd)" = "$GITHUB_WORKSPACE" ]; then
                 copy_index_to_readme
             fi
 
