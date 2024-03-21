@@ -87,7 +87,7 @@ jobs:
             fi
 
             if [ "$(find "$GITHUB_WORKSPACE" -mindepth 1 -maxdepth 1 -type d | wc -l)" -ne 0 ]; then
-                for dir in "*/$GITHUB_WORKSPACE"; do
+                for dir in "*$GITHUB_WORKSPACE"; do
                     cd "$dir" || exit
                     traverse_directories
                     cd ..
