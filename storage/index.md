@@ -1,6 +1,7 @@
 ---
 title: Storage / PV / PVC
 layout: default
+nav_order: 5
 ---
 
 # Storage / PV / PVC

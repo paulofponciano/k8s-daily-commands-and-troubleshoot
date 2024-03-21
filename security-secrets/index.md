@@ -1,6 +1,7 @@
 ---
 title: Security / Secrets
 layout: default
+nav_order: 6
 ---
 
 # Security / Secrets

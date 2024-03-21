@@ -1,6 +1,7 @@
 ---
 title: Taints / Tolerations / Affinity
 layout: default
+nav_order: 8
 ---
 
 # Taints / Tolerations / Affinity
