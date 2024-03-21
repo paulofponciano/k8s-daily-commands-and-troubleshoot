@@ -14,6 +14,9 @@ layout: default
 ```sh
 kubectl taint nodes node01 key=value:NoSchedule
 ```
+```sh
+kubectl taint nodes node01 app=blue:NoSchedule
+```
 
 ## Examples
 
