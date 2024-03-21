@@ -74,27 +74,35 @@ jobs:
         #!/bin/bash
 
         copy_index_to_readme() {
-
             if [ -e "index.md" ]; then
                 tail -n +5 index.md > README.md
-                echo "Content has been overlaid index.md to README.md on $(pwd)"
+                echo "Conteúdo de index.md copiado para README.md em $(pwd)"
             fi
         }
 
         traverse_directories() {
+            # Verifica se estamos na raiz do repositório
             if [ "$(pwd)" = "$GITHUB_WORKSPACE" ]; then
                 copy_index_to_readme
             fi
 
+            # Verifica se há subdiretórios no diretório atual
             if [ "$(find . -mindepth 1 -maxdepth 1 -type d | wc -l)" -ne 0 ]; then
+                # Percorre cada diretório no diretório atual
                 for dir in */; do
+                    # Entra no diretório
                     cd "$dir" || exit
+
+                    # Chama recursivamente esta função para o diretório atual
                     traverse_directories
+
+                    # Volta para o diretório pai
                     cd ..
                 done
             fi
         }
 
+        # Inicia a travessia do diretório a partir da raiz do repositório
         cd "$GITHUB_WORKSPACE" || exit
         traverse_directories
 
