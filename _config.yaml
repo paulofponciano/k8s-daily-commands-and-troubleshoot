@@ -2,7 +2,7 @@
 title:  K8s daily commands
 description: Comandos diários e resolução de problemas em kubernetes
 theme: just-the-docs
-favicon: "./assets/images/k8s_icon.png"
+favicon_ico: "/assets/images/k8s_icon.png"
 color_scheme: dark
 
 url: https://paulofponciano.github.io/k8s-daily-commands-and-troubleshoot/
