@@ -4,7 +4,7 @@ layout: default
 nav_order: 1
 ---
 
-# K8s daily commands
+# K8s daily commands | Keep shipping! 📦 🐳
 
 <p align="left"><img src="https://www.vectorlogo.zone/logos/kubernetes/kubernetes-icon.svg" width="80" alt="kube_logo"></p>
 
