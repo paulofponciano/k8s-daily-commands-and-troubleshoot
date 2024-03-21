@@ -1,14 +1,25 @@
-# Services
+---
+title: Home
+layout: default
+---
 
 <p align="left"><img src="https://www.vectorlogo.zone/logos/kubernetes/kubernetes-icon.svg" width="80" alt="kube_logo"></p>
 
-## Commands
+## [Pods](./pods)
 
-### Expose
+## [Deployments](./deployments)
 
-```sh
-kubectl expose pod redis --port=6379 --name redis-service
-```
+## [Services](./services)
+
+## [Security / Secrets](./security-secrets)
+
+## [Storage / PV / PVC](./storage)
+
+## [Maintenance](./maintenance)
+
+## [Labels / Selectors](./labels-selectors)
+
+## [Taints / Tolerations / Affinity](./taints-tolerations-affinity)
 
 ---
 
