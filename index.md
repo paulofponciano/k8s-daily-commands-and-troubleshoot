@@ -7,32 +7,9 @@ layout: default
 
 ## [Pods](./pods)
 
-### Commands
-
-- [**Get**](pods/README.md#get)
-- [**Exec**](pods/README.md#exec)
-- [**Run**](pods/README.md#run)
-
-### Examples
-
 ## [Deployments](./deployments)
 
-### Commands
-
-- [**Describe**](deployments/README.md#describe)
-- [**Create**](deployments/README.md#create)
-- [**Rollout**](deployments/README.md#rollout)
-- [**Scale**](deployments/README.md#scale)
-
-### Examples
-
 ## [Services](./services)
-
-### Commands
-
-- [**Expose**](services/README.md#expose)
-
-### Examples
 
 ## [Security / Secrets](./security-secrets)
 
@@ -42,16 +19,7 @@ layout: default
 
 ## [Labels / Selectors](./labels-selectors)
 
-### Commands
-
-- [**Get**](labels-selectors/README.md#get)
-- [**Label**](labels-selectors/README.md#label)
-
 ## [Taints / Tolerations / Affinity](./taints-tolerations-affinity)
-
-### Commands
-
-- [**Taint**](taints-tolerations-affinity/README.md#taint)
 
 ---
 
