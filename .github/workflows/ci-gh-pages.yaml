@@ -85,23 +85,26 @@ jobs:
 
         # Função para percorrer diretórios recursivamente
         traverse_directories() {
-            # Percorre cada diretório no diretório atual
-            for dir in "$GITHUB_WORKSPACE"; do
-                # Entra no diretório
-                cd "$dir" || exit
+            # Verifica se há subdiretórios no diretório atual
+            if [ "$(find . -mindepth 1 -maxdepth 1 -type d | wc -l)" -ne 0 ]; then
+                # Percorre cada diretório no diretório atual
+                for dir in */; do
+                    # Entra no diretório
+                    cd "$dir" || exit
 
-                # Verifica se o diretório atual não é a raiz do repositório
-                if [ "$(pwd)" != "$GITHUB_WORKSPACE" ]; then
-                    # Chama a função para copiar conteúdo de index.md para README.md
-                    copy_index_to_readme
-                fi
+                    # Verifica se o diretório atual não é a raiz do repositório
+                    if [ "$(pwd)" != "$GITHUB_WORKSPACE" ]; then
+                        # Chama a função para copiar conteúdo de index.md para README.md
+                        copy_index_to_readme
+                    fi
 
-                # Chama recursivamente esta função para o diretório atual
-                traverse_directories
+                    # Chama recursivamente esta função para o diretório atual
+                    traverse_directories
 
-                # Volta para o diretório pai
-                cd ..
-            done
+                    # Volta para o diretório pai
+                    cd ..
+                done
+            fi
         }
 
         # Chama a função principal para começar a percorrer os diretórios
