@@ -73,25 +73,38 @@ jobs:
       run: |
         #!/bin/bash
 
+        # Função para copiar conteúdo de index.md para README.md
         copy_index_to_readme() {
+            # Verifica se o arquivo index.md existe no diretório atual
             if [ -e "index.md" ]; then
+                # Copia o conteúdo de index.md para README.md
                 cat index.md > README.md
-                echo "Content has been overlaid index.md to README.md on $(pwd)"
+                echo "Conteúdo de index.md copiado para README.md em $(pwd)"
             fi
         }
 
+        # Função para percorrer diretórios recursivamente
         traverse_directories() {
+            # Percorre cada diretório no diretório atual
             for dir in .; do
+                # Entra no diretório
                 cd "$dir" || exit
 
-                copy_index_to_readme
+                # Verifica se o diretório atual não é a raiz do repositório
+                if [ "$(pwd)" != "$GITHUB_WORKSPACE" ]; then
+                    # Chama a função para copiar conteúdo de index.md para README.md
+                    copy_index_to_readme
+                fi
 
+                # Chama recursivamente esta função para o diretório atual
                 traverse_directories
 
+                # Volta para o diretório pai
                 cd ..
             done
         }
 
+        # Chama a função principal para começar a percorrer os diretórios
         traverse_directories
 
     - name: Commit and Push 🚀
