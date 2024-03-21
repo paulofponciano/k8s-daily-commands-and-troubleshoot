@@ -82,20 +82,20 @@ jobs:
         }
 
         traverse_directories() {
+            if [ "$(pwd)" != "$GITHUB_WORKSPACE" ]; then
+                copy_index_to_readme
+            fi
+
             if [ "$(find . -mindepth 1 -maxdepth 1 -type d | wc -l)" -ne 0 ]; then
                 for dir in */; do
                     cd "$dir" || exit
-                    if [ "$(pwd)" != "$GITHUB_WORKSPACE" ]; then
-                        copy_index_to_readme
-                    fi
-
                     traverse_directories
-
                     cd ..
                 done
             fi
         }
 
+        cd "$GITHUB_WORKSPACE" || exit
         traverse_directories
 
     - name: Commit and Push 🚀
