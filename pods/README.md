@@ -1,3 +1,8 @@
+---
+title: Pods
+layout: default
+---
+
 # Pods
 
 <p align="left"><img src="https://www.vectorlogo.zone/logos/kubernetes/kubernetes-icon.svg" width="80" alt="kube_logo"></p>
@@ -14,9 +19,6 @@ kubectl get all -A
 ```
 ```sh
 kubectl get events -o wide
-```
-```sh
-test
 ```
 
 ### Exec
