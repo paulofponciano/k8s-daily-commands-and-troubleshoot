@@ -1,13 +1,18 @@
-# Services
+---
+title: Taints / Tolerations / Affinity
+layout: default
+---
+
+# Taints / Tolerations / Affinity
 
 <p align="left"><img src="https://www.vectorlogo.zone/logos/kubernetes/kubernetes-icon.svg" width="80" alt="kube_logo"></p>
 
 ## Commands
 
-### Expose
+### Taint
 
 ```sh
-kubectl expose pod redis --port=6379 --name redis-service
+kubectl taint nodes node01 key=value:NoSchedule
 ```
 
 ---

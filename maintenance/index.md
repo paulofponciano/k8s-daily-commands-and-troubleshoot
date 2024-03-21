@@ -1,13 +1,30 @@
-# Services
+---
+title: Maintenance
+layout: default
+---
+
+# Maintenance
 
 <p align="left"><img src="https://www.vectorlogo.zone/logos/kubernetes/kubernetes-icon.svg" width="80" alt="kube_logo"></p>
 
 ## Commands
 
-### Expose
+### Drain
 
 ```sh
-kubectl expose pod redis --port=6379 --name redis-service
+kubectl drain node01 --ignore-daemonsets
+```
+```sh
+kubectl drain node01
+```
+
+### Cordon / Uncordon
+
+```sh
+kubectl cordon node01
+```
+```sh
+kubectl uncordon node01
 ```
 
 ---
