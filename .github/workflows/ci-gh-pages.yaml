@@ -62,46 +62,46 @@ jobs:
         uses: actions/deploy-pages@v4
 
   # README.md overlay and commit
-  readme:
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-    - name: Checkout repository 🛎️
-      uses: actions/checkout@v4
+  # readme:
+  #   runs-on: ubuntu-latest
+  #   needs: build
+  #   steps:
+  #   - name: Checkout repository 🛎️
+  #     uses: actions/checkout@v4
 
-    - name: Copy index.md to README.md 🔧
-      run: |
-        #!/bin/bash
+  #   - name: Copy index.md to README.md 🔧
+  #     run: |
+  #       #!/bin/bash
 
-        copy_index_to_readme() {
+  #       copy_index_to_readme() {
 
-            if [ -e "index.md" ]; then
-                cat index.md > README.md
-                echo "Content has been overlaid index.md to README.md on $(pwd)"
-            fi
-        }
+  #           if [ -e "index.md" ]; then
+  #               cat index.md > README.md
+  #               echo "Content has been overlaid index.md to README.md on $(pwd)"
+  #           fi
+  #       }
 
-        traverse_directories() {
-            if [ "$(find . -mindepth 1 -maxdepth 1 -type d | wc -l)" -ne 0 ]; then
-                for dir in */; do
-                    cd "$dir" || exit
-                    if [ "$(pwd)" != "$GITHUB_WORKSPACE" ]; then
-                        copy_index_to_readme
-                    fi
+  #       traverse_directories() {
+  #           if [ "$(find . -mindepth 1 -maxdepth 1 -type d | wc -l)" -ne 0 ]; then
+  #               for dir in */; do
+  #                   cd "$dir" || exit
+  #                   if [ "$(pwd)" != "$GITHUB_WORKSPACE" ]; then
+  #                       copy_index_to_readme
+  #                   fi
 
-                    traverse_directories
+  #                   traverse_directories
 
-                    cd ..
-                done
-            fi
-        }
+  #                   cd ..
+  #               done
+  #           fi
+  #       }
 
-        traverse_directories
+  #       traverse_directories
 
-    - name: Commit and Push 🚀
-      run: |
-        git config --local user.email "github-actions[bot]@users.noreply.github.com"
-        git config --local user.name "github-actions[bot]"
-        git add .
-        git commit -am ":robot: README overlay"
-        git push
+  #   - name: Commit and Push 🚀
+  #     run: |
+  #       git config --local user.email "github-actions[bot]@users.noreply.github.com"
+  #       git config --local user.name "github-actions[bot]"
+  #       git add .
+  #       git commit -am ":robot: README overlay"
+  #       git push
