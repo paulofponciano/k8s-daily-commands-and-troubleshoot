@@ -76,7 +76,7 @@ jobs:
         copy_index_to_readme() {
 
             if [ -e "index.md" ]; then
-                tail -n +5 index.md > README.md
+                tail -n +6 index.md > README.md
                 echo "Content has been overlaid index.md to README.md on $(pwd)"
             fi
         }
