@@ -98,7 +98,6 @@ jobs:
             fi
         }
 
-        
         traverse_directories
 
     - name: Commit and Push 🚀
@@ -106,5 +105,9 @@ jobs:
         git config --local user.email "github-actions[bot]@users.noreply.github.com"
         git config --local user.name "github-actions[bot]"
         git add .
+        if git diff --quiet --exit-code; then
+            echo "Without changes."
+            exit 0
+        fi
         git commit -am ":robot: README overlay"
         git push
