@@ -60,3 +60,43 @@ jobs:
       - name: Deploy to GitHub Pages 🚀
         id: deployment
         uses: actions/deploy-pages@v4
+
+  # README.md overlay and commit
+  readme:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository 🛎️
+      uses: actions/checkout@v4
+
+    - name: Copy index.md to README.md 🔧
+      run: |
+        #!/bin/bash
+
+        copy_index_to_readme() {
+            if [ -e "index.md" ]; then
+                cat index.md > README.md
+                echo "Content has been overlaid index.md to README.md on $(pwd)"
+            fi
+        }
+
+        traverse_directories() {
+            for dir in */; do
+                cd "$dir" || exit
+
+                copy_index_to_readme
+
+                traverse_directories
+
+                cd ..
+            done
+        }
+
+        traverse_directories
+
+    - name: Commit and Push 🚀
+      run: |
+        git config --local user.email "github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
+        git add .
+        git commit -am ":robot: README overlay"
+        git push
