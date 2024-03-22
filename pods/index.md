@@ -37,8 +37,28 @@ kubectl run static-busybox --image=busybox --restart=Never --dry-run=client -o y
 ```
 
 ### Replace
+
+- Forçando o _replace_ com o arquivo temporário após realizar o ```kubectl edit pod```:
+
 ```sh
 kubectl replace —force -f /tmp/kubectl-edit-temp.yaml
+```
+
+### Logs
+```sh
+kubectl logs POD_NAME -n NAMESPACE
+```
+```sh
+kubectl logs web-app -n frontend
+```
+```sh
+kubectl logs web-app -f -n frontend
+```
+
+- Caso o pod tenha sido terminado:
+
+```sh
+kubectl logs web-app -f --previous -n frontend
 ```
 
 ---

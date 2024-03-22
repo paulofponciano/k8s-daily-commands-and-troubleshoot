@@ -10,23 +10,26 @@ nav_order: 9
 
 ## Commands
 
-### Delete Evicted Pods
+- Delete Evicted Pods:
+
 ```sh
 kubectl get pod -n <namespace> | grep Evicted | awk '{print $1}' | xargs kubectl delete pod -n <namespace>
 ```
 
-### Patch resources for termination
+- Patch resources for termination:
+
  ```sh
  kubectl patch <resource>/<resource_name> -n <namespace>  --type json     --patch='[ { "op": "remove", "path": "/metadata/finalizers" } ]'
  ```
 
- ### Delete Pods stuck on terminating
+- Delete Pods stuck on terminating:
+
 ```sh
 kubectl delete pod <pod> -n <namespace> --grace-period=0 --force
 
 #multiples pods in same namespace
 for p in $(kubectl get pods -n <namespace> | grep Terminating | awk '{print $1}'); do kubectl delete pod $p --grace-period=0 --force;done
-````
+```
 
 ### Drain
 
