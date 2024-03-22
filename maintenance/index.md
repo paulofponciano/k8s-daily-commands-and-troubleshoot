@@ -10,6 +10,24 @@ nav_order: 9
 
 ## Commands
 
+### Drain
+
+```sh
+kubectl drain node01 --ignore-daemonsets
+```
+```sh
+kubectl drain node01
+```
+
+### Cordon / Uncordon
+
+```sh
+kubectl cordon node01
+```
+```sh
+kubectl uncordon node01
+```
+
 - Delete Evicted Pods:
 
 ```sh
@@ -29,24 +47,6 @@ kubectl delete pod <pod> -n <namespace> --grace-period=0 --force
 
 #multiples pods in same namespace
 for p in $(kubectl get pods -n <namespace> | grep Terminating | awk '{print $1}'); do kubectl delete pod $p --grace-period=0 --force;done
-```
-
-### Drain
-
-```sh
-kubectl drain node01 --ignore-daemonsets
-```
-```sh
-kubectl drain node01
-```
-
-### Cordon / Uncordon
-
-```sh
-kubectl cordon node01
-```
-```sh
-kubectl uncordon node01
 ```
 
 ---
