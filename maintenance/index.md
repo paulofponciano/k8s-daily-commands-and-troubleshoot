@@ -28,19 +28,19 @@ kubectl cordon node01
 kubectl uncordon node01
 ```
 
-- Delete Evicted Pods:
+### Delete Evicted Pods:
 
 ```sh
 kubectl get pod -n <namespace> | grep Evicted | awk '{print $1}' | xargs kubectl delete pod -n <namespace>
 ```
 
-- Patch resources for termination:
+### Patch resources for termination:
 
  ```sh
  kubectl patch <resource>/<resource_name> -n <namespace>  --type json     --patch='[ { "op": "remove", "path": "/metadata/finalizers" } ]'
  ```
 
-- Delete Pods stuck on terminating:
+### Delete Pods stuck on terminating:
 
 ```sh
 kubectl delete pod <pod> -n <namespace> --grace-period=0 --force
