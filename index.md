@@ -24,6 +24,8 @@ nav_order: 1
 
 ## [Taints / Tolerations / Affinity](./taints-tolerations-affinity)
 
+## [Nodes](./nodes)
+
 ---
 
 <p align="left"><a href="https://github.com/paulofponciano/k8s-daily-commands-and-troubleshoot"><img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/paulofponciano/k8s-daily-commands-and-troubleshoot?label=k8s-daily-commands-and-troubleshoot&style=social"></a></p>
