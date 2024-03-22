@@ -10,6 +10,15 @@ nav_order: 4
 
 ## Commands
 
+### Describe
+
+```sh
+kubectl describe svc SERVICE_NAME -n NAMESPACE
+```
+```sh
+kubectl describe svc mysql-service -n app-space | grep -i selector
+```
+
 ### Expose
 
 ```sh
