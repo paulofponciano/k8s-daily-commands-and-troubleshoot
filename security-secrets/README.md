@@ -7,6 +7,8 @@
 
 ### Create
 
+- Secrets:
+
 ```sh
 kubectl create secret generic \ 
   app-secret --from-literal=DB_Host=mysql \
@@ -16,6 +18,18 @@ kubectl create secret generic \
 ```sh
 kubectl create secret generic \
   app-secret --from-file=app_secret.properties
+```
+
+- Role:
+
+```sh
+kubectl create role developer --resource=pods --verb=create,list,get,update,delete --namespace=development
+```
+
+- Role Binding:
+
+```sh
+kubectl create rolebinding developer-role-binding --role=developer --user=john --namespace=development
 ```
 
 ### Curl in API Server
@@ -62,6 +76,28 @@ spec:
       envFrom:
         - secretRef:
              name: app-secret
+```
+
+- Utilizando ```securityContext```:
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: pod-with-securitycontext
+  name: pod-with-securitycontext
+spec:
+  containers:
+  - command:
+    - sleep
+    - "4800"
+    image: busybox:1.28
+    name: with-securitycontext
+    securityContext:
+      capabilities:
+        add: ["SYS_TIME"]
+  restartPolicy: Always
 ```
 
 ---
