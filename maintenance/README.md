@@ -44,6 +44,15 @@ kubectl delete pod <pod> -n <namespace> --grace-period=0 --force
 for p in $(kubectl get pods -n <namespace> | grep Terminating | awk '{print $1}'); do kubectl delete pod $p --grace-period=0 --force;done
 ```
 
+### ETCD backup
+
+```sh
+export ETCDCTL_API=3
+```
+```sh
+etcdctl snapshot save --endpoints https://[127.0.0.1]:2379 --cacert /etc/kubernetes/pki/etcd/ca.crt --cert /etc/kubernetes/pki/etcd/server.crt --key=/etc/kubernetes/pki/etcd/server.key  /opt/etcd-backup.db
+```
+
 ### Cluster upgrade with kubeadm (1.29)
 
 - Control Plane:
