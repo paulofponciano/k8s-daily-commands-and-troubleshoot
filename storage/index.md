@@ -102,6 +102,27 @@ spec:
       claimName: claim-log-1
 ```
 
+- emptyDir:
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: redis-storage
+  name: redis-storage
+spec:
+  containers:
+  - image: redis:alpine
+    name: redis-storage
+    volumeMounts:
+    - mountPath: /data/redis
+      name: temp-volume
+  volumes:
+  - name: temp-volume
+    emptyDir: {}
+```
+
 ---
 
 <p align="left"><a href="https://github.com/paulofponciano/k8s-daily-commands-and-troubleshoot"><img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/paulofponciano/k8s-daily-commands-and-troubleshoot?label=k8s-daily-commands-and-troubleshoot&style=social"></a></p>
