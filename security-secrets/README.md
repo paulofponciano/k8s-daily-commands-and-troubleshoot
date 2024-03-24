@@ -32,6 +32,15 @@ kubectl create role developer --resource=pods --verb=create,list,get,update,dele
 kubectl create rolebinding developer-role-binding --role=developer --user=john --namespace=development
 ```
 
+- Code / Decode para base 64:
+
+```sh
+echo -n 'value' | base64
+```
+```sh
+echo 'value' | base64 --decode 
+```
+
 ### Curl in API Server
 
 ```sh
@@ -76,6 +85,89 @@ spec:
       envFrom:
         - secretRef:
              name: app-secret
+```
+
+- Role:
+
+```yaml
+kind: Role
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  namespace: default
+  name: developer
+rules:
+- apiGroups: [""]
+  resources: ["pods"]
+  verbs: ["list", "create","delete"]
+```
+```yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: developer
+  namespace: blue
+rules:
+- apiGroups:
+  - ""
+  resourceNames:
+  - blue-app
+  - dark-blue-app
+  resources:
+  - pods
+  verbs:
+  - get
+  - watch
+  - create
+  - delete
+```
+
+- Role Binding:
+
+```yaml
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: dev-user-binding
+subjects:
+- kind: User
+  name: dev-user
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: Role
+  name: developer
+  apiGroup: rbac.authorization.k8s.io
+```
+
+- Cluster Role:
+
+```yaml
+---
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: node-admin
+rules:
+- apiGroups: [""]
+  resources: ["nodes"]
+  verbs: ["get", "watch", "list", "create", "delete"]
+```
+
+- Cluster Role Binding:
+
+```yaml
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: michelle-binding
+subjects:
+- kind: User
+  name: michelle
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: ClusterRole
+  name: node-admin
+  apiGroup: rbac.authorization.k8s.io
 ```
 
 - Utilizando ```securityContext```:
