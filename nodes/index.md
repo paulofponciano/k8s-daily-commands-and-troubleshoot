@@ -99,6 +99,27 @@ crictl logs --tail=2 CONTAINER_ID
 ls /etc/kubernetes/manifests/
 ```
 
+- Cluster IP range (Control Plane):
+
+```sh
+cat /etc/kubernetes/manifests/kube-apiserver.yaml | grep cluster-ip-range
+```
+
+- Weave net CNI:
+
+```sh
+echo 1 > /proc/sys/net/ipv4/ip_forward
+```
+```sh
+kubectl apply -f https://github.com/weaveworks/weave/releases/download/v2.8.1/weave-daemonset-k8s.yaml
+```
+
+- IP allocation range (Weave net CNI):
+
+```sh
+kubectl logs weave-net-6cm2b weave -n kube-system | grep ipalloc-range
+```
+
 ---
 
 <p align="left"><a href="https://github.com/paulofponciano/k8s-daily-commands-and-troubleshoot"><img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/paulofponciano/k8s-daily-commands-and-troubleshoot?label=k8s-daily-commands-and-troubleshoot&style=social"></a></p>
