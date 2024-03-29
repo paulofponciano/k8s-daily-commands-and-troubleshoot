@@ -29,11 +29,21 @@ kubectl exec POD_NAME -- COMMAND > /LOCALHOST_PATH/file.out
 ```
 
 ### Run
+
 ```sh
 kubectl run -it debian-pod --image=debian bash
 ```
+
+- Dry-Run:
+
 ```sh
 kubectl run static-busybox --image=busybox --restart=Never --dry-run=client -o yaml --command -- sleep 1000
+```
+
+- Dry-Run com saída para yaml:
+
+```sh
+kubectl run static-busybox --image=busybox --restart=Never --dry-run=client -o yaml > manifest.yaml
 ```
 
 ### Replace
@@ -54,6 +64,7 @@ kubectl describe pod mysql -n app-space | grep -i label
 ```
 
 ### Logs
+
 ```sh
 kubectl logs POD_NAME -n NAMESPACE
 ```
@@ -68,6 +79,29 @@ kubectl logs web-app -f -n frontend
 
 ```sh
 kubectl logs web-app -f --previous -n frontend
+```
+
+## Examples
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+    resources:
+      requests:
+        memory: "64Mi"
+        cpu: "250m"
+      limits:
+        memory: "128Mi"
+        cpu: "1"
+    ports:
+    - containerPort: 80
+  restartPolicy: Always
 ```
 
 ---

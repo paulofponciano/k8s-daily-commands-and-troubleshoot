@@ -13,13 +13,22 @@ nav_order: 3
 ### Create
 
 ```sh
+kubectl create deployment webapp --image=nginx --replicas=3
+```
+
+- Dry-Run:
+
+```sh
+kubectl create deployment --image=nginx nginx --dry-run=client -o yaml
+```
+
+- Dry-Run com saída para yaml:
+
+```sh
 kubectl create deployment --image=nginx nginx --dry-run=client -o yaml > nginx-deployment.yaml
 ```
 ```sh
 kubectl create deployment --image=nginx nginx --replicas=4 --dry-run=client -o yaml > nginx-deployment.yaml
-```
-```sh
-kubectl create deployment webapp --image=nginx --replicas=3
 ```
 
 ### Rollout
@@ -65,6 +74,71 @@ kubectl describe deployment.apps/frontend-deployment | grep StrategyType
 ```
 
 ## Examples
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-1
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      name: busybox-pod
+  template:
+    metadata:
+      labels:
+        name: busybox-pod
+    spec:
+      containers:
+      - name: busybox-container
+        image: busybox
+        command:
+        - sh
+        - "-c"
+        - echo Hello Kubernetes! && sleep 3600
+```
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backstage
+  namespace: backstage
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backstage
+  template:
+    metadata:
+      labels:
+        app: backstage
+    spec:
+      serviceAccountName: backstage-service-account
+      containers:
+        - name: backstage
+          image: paulofponciano/backstage:latest
+          imagePullPolicy: 'Always'
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
+            limits:
+              memory: "128Mi"
+              cpu: "1"
+          ports:
+            - name: http
+              containerPort: 7007
+          envFrom:
+            - secretRef:
+                name: postgres-secrets
+          env:
+          - name: POSTGRES_PORT
+            value: "5432"
+          - name: POSTGRES_HOST
+            value: "postgres.backstage.svc.cluster.local"    
+```
 
 ---
 
