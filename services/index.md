@@ -61,7 +61,7 @@ spec:
   type: NodePort
 ```
 
-<p align="left"><img src="./img/k8s-services-nodeport.png" width="150" alt="k8s-services-nodeport"></p>
+<p align="left"><img src="./img/k8s-services-nodeport.png" width="500" alt="k8s-services-nodeport"></p>
 
 ---
 
