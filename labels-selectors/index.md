@@ -15,6 +15,9 @@ nav_order: 7
 ```sh
 kubectl get pods --selector env=dev
 ```
+```sh
+kubectl get all --selector env=prod,bu=finance,tier=frontend
+```
 
 ### Label
 
