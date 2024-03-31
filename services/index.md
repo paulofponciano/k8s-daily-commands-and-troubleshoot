@@ -25,8 +25,8 @@ kubectl describe svc mysql-service -n app-space | grep -i selector
 kubectl expose pod redis --port=6379 --name redis-service
 ```
 ```sh
-kubectl expose deployment webapp --port=8765 --target-port=9376 \
-        --name=example-service --type=LoadBalancer
+kubectl expose deployment webapp --port=8080 --target-port=80 \
+        --name=webapp-service --type=LoadBalancer
 ```
 
 ## Examples

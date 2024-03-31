@@ -1,32 +1,50 @@
 ---
-title: Home
+title: Namespaces
 layout: default
-nav_order: 1
+nav_order: 11
 ---
 
-# K8s daily commands | Keep shipping! 📦 🐳
+# Namespaces
 
 <p align="left"><img src="https://www.vectorlogo.zone/logos/kubernetes/kubernetes-icon.svg" width="80" alt="kube_logo"></p>
 
-## [Pods](./pods)
+## Commands
 
-## [Deployments](./deployments)
+### Alterar contexto namespace default
 
-## [Services](./services)
+```sh
+kubectl config set-context $(kubectl config current-context) --namespace=NAMESPACE_NAME
+```
 
-## [Security / Secrets](./security-secrets)
+## Examples
 
-## [Storage / PV / PVC](./storage)
+### Resource Quota
 
-## [Maintenance](./maintenance)
+```yaml
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: compute-quota
+  namespace: dev
+spec:
+  hard:
+    pods: "20"
+    requests.cpu: "4"
+    requests.memory: 5Gi
+    limits.cpu: "8"
+    limits.memory: 10Gi
+```
 
-## [Labels / Selectors](./labels-selectors)
+### Labels
 
-## [Taints / Tolerations / Affinity](./taints-tolerations-affinity)
-
-## [Nodes](./nodes)
-
-## [Namespaces](./namespaces)
+```yaml
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: backstage
+  labels:
+    istio-injection: enabled
+```
 
 ---
 
