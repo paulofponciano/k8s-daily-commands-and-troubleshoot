@@ -21,7 +21,29 @@ kubectl expose pod redis --port=6379 --name redis-service
 ```
 ```sh
 kubectl expose deployment webapp --port=8080 --target-port=80 \
+        --name=webapp-service --type=ClusterIP
+```
+```sh
+kubectl expose deployment webapp --port=8080 --target-port=80 \
         --name=webapp-service --type=LoadBalancer
+```
+
+- Dry-Run:
+
+```sh
+kubectl expose pod nginx --type=NodePort --port=80 --name=nginx-service --dry-run=client -o yaml
+```
+```sh
+kubectl create service nodeport nginx --tcp=80:80 --node-port=30080 --dry-run=client -o yaml
+```
+```sh
+kubectl create service clusterip redis --tcp=6379:6379 --dry-run=client -o yaml
+```
+
+- Dry-Run com saída para yaml:
+
+```sh
+kubectl expose pod nginx --type=NodePort --port=80 --name=nginx-service --dry-run=client -o yaml > nginx-service.yaml
 ```
 
 ## Examples
