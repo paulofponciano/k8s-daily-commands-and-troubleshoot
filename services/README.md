@@ -38,6 +38,8 @@ spec:
       port: 80
 ```
 
+<p align="center"><img src="./img/k8s-services-clusterip.png" width="500" alt="k8s-services-clusterip"></p>
+
 - NodePort:
 
 ```yaml
