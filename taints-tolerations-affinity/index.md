@@ -12,11 +12,25 @@ nav_order: 8
 
 ### Taint
 
+- Adicionar taint:
+
 ```sh
 kubectl taint nodes node01 key=value:NoSchedule
 ```
 ```sh
+kubectl taint nodes node01 key=value:PreferNoSchedule
+```
+```sh
+kubectl taint nodes node01 key=value:NoExecute
+```
+```sh
 kubectl taint nodes node01 app=blue:NoSchedule
+```
+
+- Remover taint:
+
+```sh
+kubectl taint nodes controlplane node-role.kubernetes.io/control-plane:NoSchedule-
 ```
 
 ## Examples
