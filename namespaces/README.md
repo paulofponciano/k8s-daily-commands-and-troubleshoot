@@ -41,6 +41,43 @@ metadata:
     istio-injection: enabled
 ```
 
+### Limit Range
+
+```yaml
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: cpu-resource-constraint
+spec:
+  limits:
+  - default:
+      cpu: 500m #limit
+    defaultRequest:
+      cpu: 500m #request
+    max:
+      cpu: "1" #limit
+    min:
+      cpu: 100m #request
+    type: Container
+```
+```yaml
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: memory-resource-constraint
+spec:
+  limits:
+  - default:
+      memory: 1Gi #limit
+    defaultRequest:
+      memory: 1Gi #request
+    max:
+      memory: 1Gi #limit
+    min:
+      memory: 500Mi #request
+    type: Container
+```
+
 ---
 
 <p align="left"><a href="https://github.com/paulofponciano/k8s-daily-commands-and-troubleshoot"><img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/paulofponciano/k8s-daily-commands-and-troubleshoot?label=k8s-daily-commands-and-troubleshoot&style=social"></a></p>

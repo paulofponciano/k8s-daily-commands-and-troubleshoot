@@ -16,6 +16,9 @@ kubectl get all -A
 ```sh
 kubectl get events -o wide
 ```
+```sh
+kubectl get pods -A -o custom-columns=NAME:.metadata.name,CONTAINER_IMAGE:.spec.containers[].image,NAMESPACE:.metadata.namespace,STATUS:.status.phase,NODE:.spec.nodeName --sort-by=.metadata.name
+```
 
 ### Exec
 
@@ -39,6 +42,39 @@ kubectl run static-busybox --image=busybox --restart=Never --dry-run=client -o y
 
 ```sh
 kubectl run static-busybox --image=busybox --restart=Never --dry-run=client -o yaml > manifest.yaml
+```
+
+- Static pods config (worker - kubelet):
+
+```sh
+cd /etc/kubernetes/manifests
+```
+```sh
+/etc/kubernetes/manifests/static-pod.yaml
+```
+```sh
+kubelet.service
+
+ExecStart=/usr/local/bin/kubelet \\
+  ...
+  --pod-manifest-path=/etc/kubernetes/manifests \\
+  ...
+```
+
+or
+
+```sh
+kubelet.service
+
+ExecStart=/usr/local/bin/kubelet \\
+  ...
+  --config=kubeconfig.yaml \\
+  ...
+```
+```sh
+kubeconfig.yaml
+
+staticPodPath: /etc/kubernetes/manifests
 ```
 
 ### Replace
