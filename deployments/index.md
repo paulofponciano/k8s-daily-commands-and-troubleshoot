@@ -49,6 +49,9 @@ kubectl rollout undo deployment.apps/frontend-deployment
 kubectl rollout undo deployment.apps/frontend-deployment --to-revision=3
 ```
 ```sh
+kubectl rollout restart deployment.apps/frontend-deployment
+```
+```sh
 kubectl rollout pause deployment.apps/frontend-deployment
 ```
 ```sh

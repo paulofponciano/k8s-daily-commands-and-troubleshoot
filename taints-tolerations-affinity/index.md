@@ -77,6 +77,42 @@ spec:
   - name: with-node-affinity
     image: registry.k8s.io/pause:2.0
 ```
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: with-node-affinity
+spec:
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: topology.kubernetes.io/zone
+            operator: NotIn
+            values:
+            - antarctica-east2
+  containers:
+  - name: with-node-affinity
+    image: registry.k8s.io/pause:2.0
+```
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: with-node-affinity
+spec:
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: node-role.kubernetes.io/control-plane
+            operator: Exists
+  containers:
+  - name: with-node-affinity
+    image: registry.k8s.io/pause:2.0
+```
 
 ---
 
