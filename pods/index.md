@@ -65,9 +65,6 @@ ExecStart=/usr/local/bin/kubelet \\
   --pod-manifest-path=/etc/kubernetes/manifests \\
   ...
 ```
-```sh
-containerd ps
-```
 
 or
 
@@ -83,6 +80,9 @@ ExecStart=/usr/local/bin/kubelet \\
 kubeconfig.yaml
 
 staticPodPath: /etc/kubernetes/manifests
+```
+```sh
+containerd ps
 ```
 
 ### Replace
