@@ -65,6 +65,9 @@ ExecStart=/usr/local/bin/kubelet \\
   --pod-manifest-path=/etc/kubernetes/manifests \\
   ...
 ```
+```sh
+containerd ps
+```
 
 or
 
