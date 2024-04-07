@@ -43,6 +43,24 @@ kubectl get nodes --sort-by= .metadata.name
 kubectl get nodes -o jsonpath='{.items[*].status.nodeInfo.osImage}'
 ```
 
+### Top
+
+```sh
+kubectl top node
+```
+```sh
+kubectl top node --sort-by='cpu'
+```
+```sh
+kubectl top node --sort-by='cpu' --no-headers | head -1
+```
+```sh
+kubectl top node --sort-by='memory'
+```
+```sh
+kubectl top node --sort-by='memory' --no-headers | head -1
+```
+
 ### Workers
 
 - Status de serviços:
