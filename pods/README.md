@@ -44,7 +44,7 @@ kubectl run static-busybox --image=busybox --restart=Never --dry-run=client -o y
 kubectl run static-busybox --image=busybox --restart=Never --dry-run=client -o yaml > manifest.yaml
 ```
 
-- Static pods config (worker - kubelet):
+### Static pods config (worker - kubelet):
 
 ```sh
 cd /etc/kubernetes/manifests
@@ -52,32 +52,51 @@ cd /etc/kubernetes/manifests
 ```sh
 /etc/kubernetes/manifests/static-pod.yaml
 ```
-```sh
-kubelet.service
 
+- kubelet.service:
+
+```sh
 ExecStart=/usr/local/bin/kubelet \\
   ...
   --pod-manifest-path=/etc/kubernetes/manifests \\
   ...
 ```
 
-or
+ou
 
 ```sh
-kubelet.service
-
 ExecStart=/usr/local/bin/kubelet \\
   ...
   --config=kubeconfig.yaml \\
   ...
 ```
-```sh
-kubeconfig.yaml
 
+- kubeconfig.yaml:
+
+```sh
 staticPodPath: /etc/kubernetes/manifests
 ```
+
+- Identificar path dos manifestos estáticos:
+
 ```sh
-containerd ps
+ps -aux | grep kubelet
+```
+  - Saida do ps:
+```sh
+...
+--config=/var/lib/kubelet/config.yaml
+...
+```
+  - Path no arquivo config.yaml
+```sh
+staticPodPath: /etc/kubernetes/manifests
+```
+
+- Criar static pod:
+
+```sh
+kubectl run --restart=Never --image=busybox static-busybox --dry-run=client -o yaml --command -- sleep 1000 > /etc/kubernetes/manifests/static-busybox.yaml
 ```
 
 ### Replace
