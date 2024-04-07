@@ -134,6 +134,24 @@ kubectl logs web-app -f -n frontend
 kubectl logs web-app -f --previous -n frontend
 ```
 
+### Top
+
+```sh
+kubectl top pod
+```
+```sh
+kubectl top pod -A --sort-by='memory'
+```
+```sh
+kubectl top pod -A --sort-by='memory' --no-headers | head -1
+```
+```sh
+kubectl top pod -A --sort-by='cpu'
+```
+```sh
+kubectl top pod -A --sort-by='cpu' --no-headers | tail -1
+```
+
 ## Examples
 
 ```yaml
@@ -169,6 +187,21 @@ spec:
   containers:
   -  image: nginx
      name: nginx
+```
+
+- Definir scheduler:
+
+```yaml
+---
+apiVersion: v1 
+kind: Pod 
+metadata:
+  name: nginx 
+spec:
+  schedulerName: my-custom-scheduler
+  containers:
+  - image: nginx
+    name: nginx
 ```
 
 ---
