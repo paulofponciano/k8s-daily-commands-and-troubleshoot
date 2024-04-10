@@ -122,6 +122,9 @@ kubectl describe pod mysql -n app-space | grep -i label
 kubectl logs POD_NAME -n NAMESPACE
 ```
 ```sh
+kubectl logs -f POD_NAME CONTAINER_NAME -n NAMESPACE
+```
+```sh
 kubectl logs web-app -n frontend
 ```
 ```sh
