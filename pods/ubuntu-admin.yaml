@@ -1,0 +1,50 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ubuntu-admin
+  namespace: default
+spec:
+  serviceAccountName: admin-karmada-service-account
+  containers:
+  - image: ubuntu
+    command:
+      - "/bin/bash"
+      - "-c"
+      - >
+        apt-get update &&
+        apt-get install -y vim curl git &&
+        curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl &&
+        chmod +x ./kubectl &&
+        mv ./kubectl /usr/local/bin/kubectl &&
+        sleep 604800
+    imagePullPolicy: IfNotPresent
+    name: ubuntu
+  restartPolicy: Always
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: ubuntu-admin-service-account
+  namespace: default
+---
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: ubuntu-admin
+rules:
+- apiGroups: ["*"]
+  resources: ["*"]
+  verbs: ["*"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: ubuntu-admin
+subjects:
+- namespace: default
+  kind: ServiceAccount
+  name: ubuntu-admin-service-account
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: ubuntu-admin
