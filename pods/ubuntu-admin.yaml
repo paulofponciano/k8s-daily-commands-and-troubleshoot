@@ -17,7 +17,9 @@ spec:
         curl -LO "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl" &&
         chmod +x ./kubectl &&
         mv ./kubectl /usr/local/bin/kubectl &&
-        curl -s https://raw.githubusercontent.com/karmada-io/karmada/master/hack/install-cli.sh | bash -s kubectl-karmada &&
+        curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" &&
+        unzip awscliv2.zip &&
+        ./aws/install &&
         sleep 604800
     imagePullPolicy: IfNotPresent
     name: ubuntu
