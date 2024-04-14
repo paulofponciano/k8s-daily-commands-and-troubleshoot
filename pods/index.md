@@ -215,6 +215,47 @@ spec:
 - Comandos e argumentos:
 
 ```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ubuntu-admin
+  namespace: default
+spec:
+  containers:
+  - image: ubuntu
+    command:
+      - "/bin/bash"
+      - "-c"
+      - >
+        apt-get update &&
+        apt-get install -y vim curl git unzip iputils-ping telnet &&
+        curl -LO "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl" &&
+        chmod +x ./kubectl &&
+        mv ./kubectl /usr/local/bin/kubectl &&
+        curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" &&
+        unzip awscliv2.zip &&
+        ./aws/install &&
+        sleep 604800
+    imagePullPolicy: IfNotPresent
+    name: ubuntu
+  restartPolicy: Always
+```
+
+```yaml
+apiVersion: v1
+kind: Pod 
+metadata:
+  name: ubuntu-sleeper-3
+spec:
+  containers:
+  - name: ubuntu
+    image: ubuntu
+    command:
+      - "sleep"
+      - "1200"
+```
+
+```yaml
 apiVersion: v1 
 kind: Pod 
 metadata:
