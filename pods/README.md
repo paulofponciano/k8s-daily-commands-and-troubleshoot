@@ -227,8 +227,6 @@ spec:
 > [!NOTE]
 > No manifesto, o 'command' sobrepõe o 'entrypoint' do Dockerfile e 'args' sobrepõe 'CMD' do Dockerfile.
 
-  - Dockerfile:
-
 ```dockerfile
 FROM python:3.6-alpine
 
