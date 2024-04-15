@@ -21,6 +21,9 @@ kubectl create configmap \
     app-config --from-literal=APP_COLOR=blue
 ```
 ```sh
+kubectl create configmap  webapp-config-map --from-literal=APP_COLOR=darkblue --from-literal=APP_OTHER=disregard
+```
+```sh
 kubectl create configmap \
     <config-name> --from-file=<path-to-file>
 ```
@@ -55,6 +58,38 @@ spec:
      envFrom:
      - configMapRef:
          name: app-config
+```
+
+```yaml
+apiVersion: v1
+data:
+  APP_COLOR: darkblue
+  APP_OTHER: disregard
+kind: ConfigMap
+metadata:
+  name: webapp-config-map
+  namespace: default
+```
+
+```yaml
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    name: webapp-color
+  name: webapp-color
+  namespace: default
+spec:
+  containers:
+  - env:
+    - name: APP_COLOR
+      valueFrom:
+       configMapKeyRef:
+         name: webapp-config-map
+         key: APP_COLOR
+    image: kodekloud/webapp-color
+    name: webapp-color
 ```
 
 ---
