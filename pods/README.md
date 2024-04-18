@@ -25,6 +25,9 @@ kubectl get pods -A -o custom-columns=NAME:.metadata.name,CONTAINER_IMAGE:.spec.
 ```sh
 kubectl exec POD_NAME -- COMMAND > /LOCALHOST_PATH/file.out
 ```
+```sh
+kubectl exec -it app -n elastic-stack -- cat /log/app.log
+```
 
 ### Run
 
