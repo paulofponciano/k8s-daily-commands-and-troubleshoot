@@ -15,14 +15,10 @@ nav_order: 6
 - Secrets:
 
 ```sh
-kubectl create secret generic \ 
-  app-secret --from-literal=DB_Host=mysql \
-                      --from-literal=DB_User=root
-                      --from-literal=DB_Password=passwd
+kubectl create secret generic db-secret --from-literal=DB_Host=sql01 --from-literal=DB_User=root --from-literal=DB_Password=password123
 ```
 ```sh
-kubectl create secret generic \
-  app-secret --from-file=app_secret.properties
+kubectl create secret generic app-secret --from-file=app_secret.properties
 ```
 
 - Role:
