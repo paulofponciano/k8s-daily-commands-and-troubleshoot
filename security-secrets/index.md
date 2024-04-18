@@ -92,6 +92,56 @@ spec:
              name: app-secret
 ```
 
+- Env:
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: firstpod-web
+  labels:
+    app: firstpod-web
+    tier: front-end
+spec:
+  containers:
+    - name: nginx-container
+      image: nginx
+      ports:
+        - containerPort: 80
+      env:
+      - name: DB_Password
+        valueFrom:
+          secretKeyRef:
+            name: app-secret
+            key: DB_Password
+```
+
+- Volume:
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: firstpod-web
+  labels:
+    app: firstpod-web
+    tier: front-end
+spec:
+  containers:
+    - name: nginx-container
+      image: nginx
+      ports:
+        - containerPort: 80
+      volumeMounts:
+        - name: app-secret-volume
+          readOnly: true
+          mountPath: "/etc/app-secret-volume"
+  volumes:
+    - name: app-secret-volume
+      secret:
+        secretName: app-secret
+```
+
 - Role:
 
 ```yaml
