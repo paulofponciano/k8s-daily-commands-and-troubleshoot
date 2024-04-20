@@ -311,6 +311,7 @@ spec:
     image: busybox
     command: ['sh', '-c', 'git clone <some-repository-that-will-be-used-by-application> ;']
 ```
+
 ```yaml
 apiVersion: v1
 kind: Pod
