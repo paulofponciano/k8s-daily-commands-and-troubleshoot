@@ -49,8 +49,22 @@ kubectl delete pod <pod> -n <namespace> --grace-period=0 --force
 for p in $(kubectl get pods -n <namespace> | grep Terminating | awk '{print $1}'); do kubectl delete pod $p --grace-period=0 --force;done
 ```
 
+### Manifests backup
+
+```sh
+kubectl get all --all-namespaces -o yaml > all-manifests.yaml
+```
+
 ### ETCD backup
 
+- Fazer backup:
+
+> [!NOTE]
+> Por padrão, o ETCD é executado no Master node.
+
+```sh
+kubectl -n kube-system describe pod etcd-controlplane | grep '\--listen-client-urls'
+```
 ```sh
 export ETCDCTL_API=3
 ```
@@ -58,8 +72,44 @@ export ETCDCTL_API=3
 etcdctl snapshot save --endpoints https://[127.0.0.1]:2379 --cacert /etc/kubernetes/pki/etcd/ca.crt --cert /etc/kubernetes/pki/etcd/server.crt --key=/etc/kubernetes/pki/etcd/server.key  /opt/etcd-backup.db
 ```
 
+- Status do backup:
+
+```sh
+etcdctl snapshot status --endpoints https://[127.0.0.1]:2379 --cacert /etc/kubernetes/pki/etcd/ca.crt --cert /etc/kubernetes/pki/etcd/server.crt --key=/etc/kubernetes/pki/etcd/server.key /opt/etcd-backup.db
+```
+
+- Restaurar backup:
+
+> [!NOTE]
+> Como é criado um novo _--dat-dir_, é necessário modificar em '/etc/kubernetes/manifests/etcd.yaml' e também modificar o _hostPath_.
+
+```sh
+service kube-apiserver stop
+```
+```sh
+etcdctl snapshot restore --endpoints https://[127.0.0.1]:2379 --cacert /etc/kubernetes/pki/etcd/ca.crt --cert /etc/kubernetes/pki/etcd/server.crt --key=/etc/kubernetes/pki/etcd/server.key /opt/etcd-backup.db --data-dir /var/lib/etcd-from-backup
+```
+```sh
+vim /etc/kubernetes/manifests/etcd.yaml
+```
+```sh
+systemctl daemon-reload
+```
+```sh
+service etcd restart
+```
+```sh
+service kube-apiserver start
+```
+
 - Certificados ETCD (default):
 
+```sh
+kubectl -n kube-system describe pod etcd-controlplane | grep '\--cert-file'
+```
+```sh
+kubectl -n kube-system describe pod etcd-controlplane | grep '\--trusted-ca-file'
+```
 ```sh
 --cacert /etc/kubernetes/pki/etcd/ca.crt
 ```
