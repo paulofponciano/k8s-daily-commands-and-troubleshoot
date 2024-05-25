@@ -52,6 +52,33 @@ curl -v -k https://master-node-ip:6443/api/v1/pods --header “Authorization: Ba
 curl -v -k https://master-node-ip:6443/api/v1/pods -insecure --header “Authorization: Baerer TOKEN”
 ```
 
+### Get
+
+- CertificateSigningRequest:
+
+```sh
+kubectl get csr akshay -o yaml
+```
+
+### Certificate
+
+- CertificateSigningRequest:
+
+```sh
+kubectl certificate approve akshay
+```
+```sh
+kubectl certificate deny agent-smith
+```
+
+### Delete
+
+- CertificateSigningRequest:
+
+```sh
+kubectl delete csr agent-smith
+```
+
 ## Examples
 
 ```yaml
@@ -277,6 +304,33 @@ spec:
       protocol: UDP
     - port: 53
       protocol: TCP
+```
+
+- CertificateSigningRequest:
+
+```sh
+cat akshay.csr | base64 -w 0
+```
+
+```yaml
+---
+apiVersion: certificates.k8s.io/v1
+kind: CertificateSigningRequest
+metadata:
+  name: akshay
+spec:
+  groups:
+  - system:authenticated
+  request: <Paste the base64 encoded value of the CSR file>
+  signerName: kubernetes.io/kube-apiserver-client
+  usages:
+  - client auth
+```
+
+- Approve:
+
+```sh
+kubectl certificate approve akshay
 ```
 
 ---
