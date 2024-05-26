@@ -79,6 +79,20 @@ kubectl certificate deny agent-smith
 kubectl delete csr agent-smith
 ```
 
+### Auth
+
+- Checando permissões:
+
+```sh
+kubectl auth can-i create deployments
+```
+```sh
+kubectl auth can-i delete nodes
+```
+```sh
+kubectl auth can-i delete nodes --as user-1
+```
+
 ## Examples
 
 ```yaml
@@ -172,6 +186,9 @@ rules:
 - apiGroups: [""]
   resources: ["pods"]
   verbs: ["list", "create","delete"]
+- apiGroups: [""]
+  resources: ["ConfigMap"]
+  verbs: ["create"]
 ```
 ```yaml
 apiVersion: rbac.authorization.k8s.io/v1
