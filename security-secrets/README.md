@@ -28,6 +28,22 @@ kubectl create role developer --resource=pods --verb=create,list,get,update,dele
 kubectl create rolebinding developer-role-binding --role=developer --user=john --namespace=development
 ```
 
+- Service Account:
+
+```sh
+kubectl create serviceaccount dashboard-sa
+```
+
+- Token (Com tempo de expiração):
+
+```sh
+kubectl create token [SERVICEACCOUNT_NAME]
+```
+
+```sh
+kubectl create token dashboard-sa
+```
+
 - Code / Decode para base 64:
 
 ```sh
@@ -37,27 +53,18 @@ echo -n 'value' | base64
 echo 'value' | base64 --decode 
 ```
 
-### Curl in API Server
-
-```sh
-curl -v -k https://kube-apiserver:6443/api/v1/pods --key admin.key --cert admin.crt --cacert ca.crt
-```
-```sh
-curl -v -k https://master-node-ip:6443/api/v1/pods -u “user:password”
-```
-```sh
-curl -v -k https://master-node-ip:6443/api/v1/pods --header “Authorization: Baerer TOKEN”
-```
-```sh
-curl -v -k https://master-node-ip:6443/api/v1/pods -insecure --header “Authorization: Baerer TOKEN”
-```
-
 ### Get
 
 - CertificateSigningRequest:
 
 ```sh
 kubectl get csr akshay -o yaml
+```
+
+### Describe
+
+```sh
+kubectl describe secret dashboard-sa-token
 ```
 
 ### Certificate
@@ -91,6 +98,21 @@ kubectl auth can-i delete nodes
 ```
 ```sh
 kubectl auth can-i delete nodes --as user-1
+```
+
+### Curl in API Server
+
+```sh
+curl -v -k https://kube-apiserver:6443/api/v1/pods --key admin.key --cert admin.crt --cacert ca.crt
+```
+```sh
+curl -v -k https://master-node-ip:6443/api/v1/pods -u “user:password”
+```
+```sh
+curl -v -k https://master-node-ip:6443/api/v1/pods --header “Authorization: Baerer TOKEN”
+```
+```sh
+curl -v -k https://master-node-ip:6443/api/v1/pods -insecure --header “Authorization: Baerer TOKEN”
 ```
 
 ## Examples
@@ -280,6 +302,16 @@ spec:
       capabilities:
         add: ["SYS_TIME"]
   restartPolicy: Always
+```
+
+- Service Account:
+
+```yaml
+```
+
+- Secret para Service Account (Token):
+
+```yaml
 ```
 
 - Network policy:
