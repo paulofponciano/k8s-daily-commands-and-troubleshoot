@@ -97,6 +97,8 @@ spec:
         - echo Hello Kubernetes! && sleep 3600
 ```
 
+- Service Account, Env e envFrom:
+
 ```yaml
 apiVersion: apps/v1
 kind: Deployment

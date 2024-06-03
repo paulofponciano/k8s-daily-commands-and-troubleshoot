@@ -117,6 +117,8 @@ curl -v -k https://master-node-ip:6443/api/v1/pods -insecure --header “Authori
 
 ## Examples
 
+- Secret:
+
 ```yaml
 apiVersion: v1
 kind: Secret
@@ -127,6 +129,9 @@ data:
   DB_User:
   DB_Password:
 ```
+
+- envFrom:
+
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -146,7 +151,7 @@ spec:
              name: app-secret
 ```
 
-- Env:
+- valueFrom:
 
 ```yaml
 apiVersion: v1
@@ -307,11 +312,22 @@ spec:
 - Service Account:
 
 ```yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: dashboard-sa
 ```
 
 - Secret para Service Account (Token):
 
 ```yaml
+apiVersion: v1
+kind: Secret
+type: kubernetes.io/service-account-token
+metadata:
+  name: dashboard-secret
+  annotations:
+    kubernetes.io/service-account.name: dashboard-sa
 ```
 
 - Network policy:

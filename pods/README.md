@@ -286,6 +286,25 @@ spec:
   automountServiceAccountToken: false  
 ```
 
+- Service Account:
+
+```yaml
+apiVersion: v1 
+kind: Pod 
+metadata:
+  name: webapp-green
+  labels:
+      name: webapp-green 
+spec:
+  serviceAccountName: webapp-green-sa
+  containers:
+  - name: simple-webapp
+    image: kodekloud/webapp-color
+    command: ["python", "app.py"]
+    args: ["--color", "pink"]
+  automountServiceAccountToken: false
+```
+
 > [!NOTE]
 > No manifesto, o 'command' sobrepõe o 'entrypoint' do Dockerfile e 'args' sobrepõe 'CMD' do Dockerfile.
 
