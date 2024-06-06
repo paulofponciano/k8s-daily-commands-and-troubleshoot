@@ -20,6 +20,16 @@ kubectl create secret generic db-secret --from-literal=DB_Host=sql01 --from-lite
 ```sh
 kubectl create secret generic app-secret --from-file=app_secret.properties
 ```
+```sh
+kubectl create secret docker-registry regcred \
+   --docker-server= registry-name.io  \
+   --docker-username= registry-user \
+   --docker-password= registry-password \
+   --docker-email= registry-user@company.io
+```
+```sh
+kubectl create secret docker-registry private-reg-cred --docker-username=dock_user --docker-password=dock_password --docker-server=myprivateregistry.com:5000 --docker-email=dock_user@myprivateregistry.com
+```
 
 - Role:
 
@@ -401,6 +411,26 @@ spec:
 
 ```sh
 kubectl certificate approve akshay
+```
+
+- Registry secret - ```imagePullSecrets```:
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: firstpod-web
+  labels:
+    app: firstpod-web
+    tier: front-end
+spec:
+  containers:
+    - name: nginx-container
+      image: registry-name.io/nginx-custom-image
+      ports:
+        - containerPort: 80
+  imagePullSecrets:
+    - name: regcred
 ```
 
 ---
