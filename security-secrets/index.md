@@ -319,9 +319,29 @@ spec:
     image: busybox:1.28
     name: with-securitycontext
     securityContext:
+      runAsUser: 1000
       capabilities:
         add: ["SYS_TIME"]
   restartPolicy: Always
+```
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: multi-pod
+spec:
+  securityContext:
+    runAsUser: 1001
+  containers:
+  -  image: ubuntu
+     name: web
+     command: ["sleep", "5000"]
+     securityContext:
+      runAsUser: 1002
+
+  -  image: ubuntu
+     name: sidecar
+     command: ["sleep", "5000"]
 ```
 
 - Service Account:
@@ -347,6 +367,66 @@ metadata:
 
 - Network policy:
 
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: db-policy-ingress
+  namespace: default
+spec:
+  podSelector:
+    matchLabels:
+      role: db
+  policyTypes:
+  - Ingress
+  ingress:
+  - from:
+    - podSelector:  #primeira regra
+        matchLabels:
+          name: api-pod
+      namespaceSelector:
+        matchLabels:
+          name: prod
+    - ipBlock:      #segunda regra
+        cidr: 10.10.5.20/32
+    ports:
+    - protocol: TCP
+      port: 3306
+```
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: db-policy-ingress-egress
+  namespace: default
+spec:
+  podSelector:
+    matchLabels:
+      role: db
+  policyTypes:
+  - Ingress
+  - Egress
+  ingress:
+  - from:
+    - podSelector:  #primeira regra
+        matchLabels:
+          name: api-pod
+      namespaceSelector:
+        matchLabels:
+          name: prod
+    - ipBlock:      #segunda regra
+        cidr: 10.10.5.20/32
+    ports:
+    - protocol: TCP
+      port: 3306
+  egress:
+  - to:
+    - ipBlock:
+        cidr: 10.10.5.20/32
+    ports: 
+    - protocol: TCP
+      port: 80
+```
 ```yaml
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
