@@ -12,9 +12,20 @@ nav_order: 5
 
 ### Mount in Docker
 
+- Bind:
+
 ```sh
 docker run \
 --mount type=bind, source=/data/mysql, target=/var/lib/mysql mysql
+```
+
+- Usando driver:
+
+```sh
+docker run -it \
+  --name mysql
+  --volume-driver rexray/ebs
+  --mount src=ebs-vol, target=/var/lib/mysql mysql
 ```
 
 ## Examples
