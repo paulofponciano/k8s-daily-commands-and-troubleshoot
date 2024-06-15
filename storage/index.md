@@ -10,7 +10,19 @@ nav_order: 5
 
 ## Commands
 
+### Get
+
+```sh
+kubectl get persistentvolume
+```
+```sh
+kubectl get persistentvolumeclaim
+```
+
 ### Mount in Docker
+
+> [!NOTE]
+> Recapitular no docker.
 
 - Bind:
 
@@ -57,7 +69,10 @@ spec:
       type: Directory
 ```
 
-- Persistent Volume:
+> [!NOTE]
+> Persistent Volumes e Persistent Volume Claims possuem uma relação 1:1.
+
+- Persistent Volume: 
 
 ```yaml
 apiVersion: v1
