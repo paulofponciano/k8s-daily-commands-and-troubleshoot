@@ -34,6 +34,9 @@ kubectl exec -it app -n elastic-stack -- cat /log/app.log
 ```sh
 kubectl run -it debian-pod --image=debian bash
 ```
+```sh
+kubectl run nslookup --image=busybox:1.28 --restart=Never --rm -it -- nslookup nginx-service-cka > nginx-service.txt
+```
 
 - Dry-Run:
 
