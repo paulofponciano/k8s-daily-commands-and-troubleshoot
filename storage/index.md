@@ -69,9 +69,6 @@ spec:
       type: Directory
 ```
 
-> [!NOTE]
-> Persistent Volumes e Persistent Volume Claims possuem uma relação 1:1.
-
 - Persistent Volume: 
 
 ```yaml
